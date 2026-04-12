@@ -2,13 +2,14 @@ import json
 
 import requests
 
-# TODO: send a GET using the URL http://127.0.0.1:8000
-r = None # Your code here
+BASE_URL = "http://127.0.0.1:8000"
 
-# TODO: print the status code
-# print()
-# TODO: print the welcome message
-# print()
+# ---- GET request ----------------------------------------------------------
+r = requests.get(f"{BASE_URL}/")
+
+# print status code and welcome message
+print("GET / status:", r.status_code)
+print("GET / response:", r.json())
 
 
 
@@ -28,11 +29,7 @@ data = {
     "hours-per-week": 40,
     "native-country": "United-States",
 }
+r = requests.post(f"{BASE_URL}/predict/", json=data)
 
-# TODO: send a POST using the data above
-r = None # Your code here
-
-# TODO: print the status code
-# print()
-# TODO: print the result
-# print()
+print("POST /predict/ status:", r.status_code)
+print("POST /predict/ response:", r.json())
